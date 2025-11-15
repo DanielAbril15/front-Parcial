@@ -52,3 +52,18 @@
   font-weight: 600;
   color: #c4b5fd;
 }
+/* button{
+  WI
+} */
+.input {
+  width: 100%;
+  margin-bottom: 3px;
+}
+.card__actions {
+  display: flex;
+  justify-content: space-around;
+}
+button {
+  border-radius: 6px;
+  padding: 6px;
+}
