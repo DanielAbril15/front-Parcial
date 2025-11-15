@@ -1,0 +1,18 @@
+.grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  margin: auto;
+}
+
+.status-msg {
+  margin-top: 2rem;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.status-msg--error {
+  color: #fecaca;
+}
