@@ -28,6 +28,18 @@ function Caballeros() {
     fetchCaballeros();
   }, []);
 
+  const handleUpdated = (caballeroActualizado) => {
+    setCaballeros((prev) =>
+      prev.map((c) =>
+        c._id === caballeroActualizado._id ? caballeroActualizado : c
+      )
+    );
+  };
+
+  const handleDeleted = (idEliminado) => {
+    setCaballeros((prev) => prev.filter((c) => c._id !== idEliminado));
+  };
+
   if (loading) {
     return <p className="status-msg">Cargando caballeros… ✨</p>;
   }
@@ -43,7 +55,12 @@ function Caballeros() {
   return (
     <section className="grid-wrapper">
       {caballeros.map((c) => (
-        <CaballeroCard key={c._id} caballero={c} />
+        <CaballeroCard
+          key={c._id}
+          caballero={c}
+          onUpdated={handleUpdated}
+          onDeleted={handleDeleted}
+        />
       ))}
     </section>
   );

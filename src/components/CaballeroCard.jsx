@@ -2,8 +2,9 @@
 import { useState } from "react";
 import "./CaballeroCard.css";
 
-function CaballeroCard({ caballero }) {
+function CaballeroCard({ caballero, onUpdated, onDeleted }) {
   const [editMode, setEditMode] = useState(false);
+  // const [reload, setReload] = useState(false);
   const [form, setForm] = useState({ ...caballero });
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +30,9 @@ function CaballeroCard({ caballero }) {
       }
 
       setEditMode(false);
+
       alert("Caballero actualizado");
+      onUpdated(form);
     } catch (err) {
       alert("Error al guardar");
       console.log(err);
@@ -56,8 +59,8 @@ function CaballeroCard({ caballero }) {
         alert("No se pudo eliminar");
         return;
       }
-
       alert("Caballero eliminado. Recarga la página.");
+      onDeleted(caballero._id);
     } catch (err) {
       alert("Error eliminando");
       console.log(err);
@@ -120,7 +123,7 @@ function CaballeroCard({ caballero }) {
               <button
                 className="btn btn--delete"
                 onClick={() => {
-                  setForm({ ...caballero }); // restaura
+                  setForm({ ...caballero });
                   setEditMode(false);
                 }}
               >
